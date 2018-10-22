@@ -12,7 +12,10 @@ class Project(models.Model):
     date_created = models.DateField(auto_now=True)
     date_goal = models.DateField()
     date_finished = models.DateField(null=True, blank=True)
-    status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES)
+    status = models.PositiveSmallIntegerField(default=1, choices=STATUS_CHOICES)
     amount_funded = models.FloatField(default=0)
     amount_goal = models.FloatField()
     creator_address = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
