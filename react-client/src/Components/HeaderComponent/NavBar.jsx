@@ -4,12 +4,12 @@ class NavBar extends Component {
   render() {
     return (
       <header>
-        <div class="nav-header">
-            <a href="#default" class="logo">EthFund</a>
-            <div class="header-right">
-                <a class="active" href="#home">Home</a>
-                <a href="#contact">Fund</a>
-                <a href="#about">Make a fund raise</a>
+        <div className="nav-header">
+            <a href="/" className="logo">EthFund</a>
+            <div className="header-right">
+                <Link to="/">Home</Link>
+                <Link to="/fundlist">Fund</Link>
+                <Link to="/raisefund">Make a fund raise</Link>
             </div>
         </div>
       </header>
