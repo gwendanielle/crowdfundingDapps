@@ -69,7 +69,40 @@ class App extends Component {
   {
     "constant": true,
     "inputs": [],
+    "name": "getProjectAddresses",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "projectAddresses",
     "outputs": [
       {
         "name": "",
@@ -121,9 +154,10 @@ class App extends Component {
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  }]);
+  }
+]);
     this.state = {
-      ContractInstance: MyContract.at("0xda1442d2774d43d2316b3329f8238724891b009b")
+      ContractInstance: MyContract.at("0xe8dc06c016dfb030bf8a2336ed2d29f67b949548")
     };
   }
   render() {
