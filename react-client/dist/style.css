@@ -68,3 +68,11 @@ ul {
 .top-margin {
     margin-top: 10%;
 }
+
+.border-box {
+    border: 2px solid black;
+}
+
+.padding-left {
+    padding-left: 5%;
+}
