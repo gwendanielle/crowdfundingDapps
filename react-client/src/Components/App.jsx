@@ -134,7 +134,7 @@ class App extends Component {
           <Route name="home" exact path="/" component={HomePage} />
           <Route name="fund" path="/fund/:id" component={FundPage} />
           <Route name="fundlist" exact path="/fundlist" component={FundListPage} />
-          <Route name="raisefund" exact path="/raisefund" component={RaiseFundPage} />
+          <Route name="raisefund" exact path="/raisefund" render={()=><RaiseFundPage num="2" contractInstance={this.state.ContractInstance}/>} />
         </div>
       </Router>
     )
