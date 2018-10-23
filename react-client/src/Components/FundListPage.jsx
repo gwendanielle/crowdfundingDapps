@@ -13,7 +13,7 @@ class FundListPage extends Component {
         };
       }
     
-      componentDidMount() {
+    componentDidMount() {
         fetch(API)
           .then(res => {
               return res.json();
@@ -33,8 +33,8 @@ class FundListPage extends Component {
                 error
               });
             }
-          )
-      }
+        )
+    }
     
     render() {
         const { error, isLoaded, items } = this.state;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 const API = 'http://samu.localtunnel.me/api/projects/';
 
 class RaiseFundPage extends Component {
-    
     constructor(props) {
         super(props);
         this.state = {
@@ -14,9 +14,17 @@ class RaiseFundPage extends Component {
             date_goal: '',
             creator_address: '',
             category: 1,
+            startDate: moment(),
             ContractInstance: this.props.contractInstance
         };
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    
+    handleChange(date) {
+        this.setState({
+          startDate: date
+        });
     }
 
     onSubmit(e) {
@@ -79,7 +87,7 @@ class RaiseFundPage extends Component {
                     <div>
                         <label>
                             date_goal: 
-                            <input type="text" name="date_goal" id="date_goal" />
+                            <DatePicker dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} name="date_goal" id="date_goal" />
                         </label>
                     </div>
                     <button type="submit">Submit</button>
