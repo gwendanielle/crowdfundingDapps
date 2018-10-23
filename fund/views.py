@@ -39,11 +39,14 @@ class ProjectDetailAPIView(APIView):
 
         try:
             amount_funded = float(amount_funded)
+            if amount_funded <= 0:
+                return Response({'details': 'Funded amount should be greater than 0'}, status=400)
         except ValueError as e:
             return Response({'details': 'Funded amount is not a valid value'}, status=400)
 
         project.amount_funded = project.amount_funded + amount_funded
         if project.amount_funded >= project.amount_goal:
+            project.amount_goal = project.amount_goal
             project.status = 2
             project.date_finished = datetime.now()
 
