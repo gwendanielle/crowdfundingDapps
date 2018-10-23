@@ -56,3 +56,11 @@ class ProjectListAPIView(APIView):
         projects = Project.objects.all()
         serialized_projects = ProjectSerializer(projects, many=True)
         return Response(serialized_projects.data, status=200)
+
+    def post(self, request):
+        project_data = request.data
+        serialized_project = ProjectSerializer(data=project_data)
+        if serialized_project.is_valid(raise_exception=True):
+            serialized_project.save()
+
+        return Response(serialized_project.data, status=200)
