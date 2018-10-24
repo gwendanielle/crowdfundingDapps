@@ -70,14 +70,15 @@ class FundPage extends Component {
             <div className="center-elements top-margin border-box padding-left">
                 <h2>{items.title}</h2>
                 {items.status == 1 &&
-                    <p className="project-status"><i>On going</i> | date created: {items.date_created} | goal date: {items.date_goal}</p>
+                    <p className="project-status"><i>On going</i> | Date created: {items.date_created} | Goal date: {items.date_goal}</p>
                 }
                 {items.status == 2 &&
-                    <p className="project-status"><i>Completed</i> | date created: {items.date_created} | goal date: {items.date_goal}</p>
+                    <p className="project-status"><i>Completed</i> | Date created: {items.date_created} | Goal date: {items.date_goal}</p>
                 }
                 <p>{items.description}</p>
                 Goal Amount: <strong>{items.amount_goal} eth</strong> | Fund Raised: <strong>{items.amount_funded} eth</strong>
-                <form onSubmit={this.onSubmit}>
+                {items.status == 1 &&
+                  <form onSubmit={this.onSubmit}>
                     <div className="center-elements top-margin">
                         <div>
                             <label>
@@ -87,7 +88,7 @@ class FundPage extends Component {
                         </div>
                         <button type="submit">Submit</button>
                     </div>
-                </form>
+                </form>}
             </div>
           );
         }

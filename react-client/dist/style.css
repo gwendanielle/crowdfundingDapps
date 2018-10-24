@@ -153,6 +153,11 @@ ul {
   position: fixed;
 }
 
+.solidHeader {
+  background-color: #333 !important;
+  position: relative !important;
+}
+
 .divider {
   width: 40%;
   height: 10px;
