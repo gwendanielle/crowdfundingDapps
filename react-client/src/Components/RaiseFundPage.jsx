@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-const API = 'http://samu.localtunnel.me/api/projects/';
+const API = 'http://fundeth.localtunnel.me/api/projects/';
 
 class RaiseFundPage extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class RaiseFundPage extends Component {
         let description = document.getElementById('description').value;
         let amount_goal = document.getElementById('amount_goal').value;
         let date_goal = document.getElementById('date_goal').value;
-        let goalValue = web3.toWei(parseFloat(amount_goal), 'ether');
+        let goalValue = web3.toBigNumber(web3.toWei(parseFloat(amount_goal), 'ether'));
 
         this.props.contractInstance.addProject(goalValue, {
             gas: 300000,

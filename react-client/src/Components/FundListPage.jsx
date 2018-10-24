@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-const API = 'http://samu.localtunnel.me/api/projects/';
+const API = 'http://fundeth.localtunnel.me/api/projects/';
 
 class FundListPage extends Component {
     constructor(props) {
