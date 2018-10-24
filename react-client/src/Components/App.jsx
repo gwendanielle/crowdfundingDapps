@@ -157,7 +157,7 @@ class App extends Component {
   }
 ]);
     this.state = {
-      ContractInstance: MyContract.at("0x7ca3aa4da52676b45e53fb9a38aaa2f7f800ed00")
+      ContractInstance: MyContract.at("0x124329c6d0dff906cb0c1875efefe1d79c7eb686")
     };
   }
   render() {

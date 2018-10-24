@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom';
 class HomePage extends Component {
   render() {
     return (
-      <div className="center-elements top-margin">
-        <Link to="/fundlist"><button className="center-elements">Fund</button></Link>
-        <Link to="/raisefund"><button className="center-elements">Raise a Funding</button></Link>
-      </div>
+        <div>
+        <div id="slide1">
+            <div className="content">
+                <h1 className="logo">EthFund</h1>
+                <div className="divider"></div>
+                <h3 className="landing-body">Realizing dreams through blockchain technology</h3>
+                <Link to="/raisefund"><button className="landing-button">Start fundraising</button></Link>
+            </div>
+        </div>
+        <div id="slide2">
+        </div>
+        </div>
     )
   }
 }

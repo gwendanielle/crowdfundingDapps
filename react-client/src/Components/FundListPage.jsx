@@ -44,20 +44,32 @@ class FundListPage extends Component {
           return <div>Loading...</div>;
         } else {
           return (
-            <ul>
-              {items.map(item => (
-                <li key={item.title}>
-                  <Link to={"/fund/" + item.id}><h3>{item.title}</h3></Link>
-                  {item.status == 1 &&
-                    <p className="project-status"><i>On going</i> | goal amount: {item.amount_goal} | goal date: {item.date_goal}</p>
-                  }
-                  {item.status == 2 &&
-                    <p className="project-status"><i>Completed</i> | goal amount: {item.amount_goal} | goal date: {item.date_goal}</p>
-                  }
-                  <Link to={"/fund/" + item.id}>show details</Link>
-                </li>
-              ))}
-            </ul>
+            <div>
+                <div className="bodyDiv">
+                    <h2 className="header-font">Let's make the world a better place, shall we?</h2>
+                    <h5 className="body-font">Here's a list of projects you might be able to help...</h5>
+                    <ul style={{marginTop: "45px", padding: "0px"}}>
+                      {items.map(item => (
+                        <li className="fund-listing" key={item.title}>
+                          <Link to={"/fund/" + item.id}><h3>{item.title}</h3></Link>
+                          <p className="project-status">
+                          {item.status == 1 &&
+                            <span style={{color: "blue", marginRight: "10px"}}>On going</span>
+                          }
+                          {item.status == 2 &&
+                            <span style={{color: "green", marginRight: "10px"}}>Completed</span> 
+                          }
+                          {item.status == 3 &&
+                            <span style={{color: "red", marginRight: "10px"}}>Ended</span> 
+                          }
+                           | asking for {item.amount_goal} ETH (~{item.amount_goal * 22500} 円) until {item.date_goal}
+                          </p>
+                          <Link to={"/fund/" + item.id}>- Click for more details -</Link>
+                        </li>
+                      ))}
+                    </ul>
+                </div>
+            </div>
           );
         }
     }
