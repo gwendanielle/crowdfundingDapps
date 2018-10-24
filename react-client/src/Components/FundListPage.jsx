@@ -20,7 +20,6 @@ class FundListPage extends Component {
           })
           .then(
             (result) => {
-              console.log(result);
               this.setState({
                 isLoaded: true,
                 items: result
