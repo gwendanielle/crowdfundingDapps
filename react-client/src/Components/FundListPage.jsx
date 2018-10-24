@@ -49,12 +49,12 @@ class FundListPage extends Component {
                 <li key={item.title}>
                   <Link to={"/fund/" + item.id}><h3>{item.title}</h3></Link>
                   {item.status == 1 &&
-                    <p className="project-status"><i>On going</i> | date created: {item.date_created}, goal date: {item.date_goal}</p>
+                    <p className="project-status"><i>On going</i> | goal amount: {item.amount_goal} | goal date: {item.date_goal}</p>
                   }
                   {item.status == 2 &&
-                    <p className="project-status"><i>Completed</i> | date created: {item.date_created}, goal date: {item.date_goal}</p>
+                    <p className="project-status"><i>Completed</i> | goal amount: {item.amount_goal} | goal date: {item.date_goal}</p>
                   }
-                  {item.description}
+                  <Link to={"/fund/" + item.id}>show details</Link>
                 </li>
               ))}
             </ul>

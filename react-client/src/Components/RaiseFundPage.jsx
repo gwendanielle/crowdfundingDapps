@@ -83,7 +83,7 @@ class RaiseFundPage extends Component {
                     </div>
                     <div>
                         <label>
-                            goal amount: 
+                            goal amount(in eth): 
                             <input type="number" name="amount_goal" id="amount_goal" required pattern="^\d+(?:\.\d{1,2})?$"/>
                         </label>
                     </div>
