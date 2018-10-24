@@ -5,7 +5,7 @@ from django.db import models
 
 
 CATEGORY_CHOICES = ((1, 'Personal'), (2, 'Education'), (3, 'Community'),
-                    (4, 'Health & Medicine'), (5, 'Special Events'))
+                    (4, 'Health & Medicine'), (5, 'Others'))
 STATUS_CHOICES = ((1, 'Ongoing'), (2, 'Completed'), (3, 'Ended'))
 
 def validate_date_goal(value):
