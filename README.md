@@ -1,2 +1,3 @@
 # crowdfunding-dapps
 
+EthFundの仕組みは、ユーザーはMetamaskを持つWebbrowserを使います。ユーザーはProjectをさくせいしたり、browseしたり、資金を送ったりすることができます
