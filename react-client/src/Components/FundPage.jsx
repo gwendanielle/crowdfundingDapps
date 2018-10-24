@@ -82,7 +82,7 @@ class FundPage extends Component {
                         <div>
                             <label>
                             amount: 
-                            <input type="number" name="amount" id="amount" required/>
+                            <input type="text" name="amount" id="amount" required pattern="^\d+(?:\.\d{1,2})?$"/>
                             </label>
                         </div>
                         <button type="submit">Submit</button>

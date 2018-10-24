@@ -28,7 +28,7 @@ class RaiseFundPage extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
         let amount_goal = document.getElementById('amount_goal').value;
@@ -84,7 +84,7 @@ class RaiseFundPage extends Component {
                     <div>
                         <label>
                             goal amount: 
-                            <input type="number" name="amount_goal" id="amount_goal" required/>
+                            <input type="number" name="amount_goal" id="amount_goal" required pattern="^\d+(?:\.\d{1,2})?$"/>
                         </label>
                     </div>
                     <div>
