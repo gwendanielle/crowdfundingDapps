@@ -28,7 +28,7 @@ class RaiseFundPage extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
         let amount_goal = document.getElementById('amount_goal').value;
@@ -82,8 +82,8 @@ class RaiseFundPage extends Component {
                                 <textarea name="description" id="description" required/>
                             </div>
                             <div className="form-field">
-                                <p>Goal amount:</p>
-                                <input type="number" name="amount_goal" id="amount_goal" required/>
+                                <p>Goal amount (in ETH):</p>
+                                <input type="text" name="amount_goal" id="amount_goal" required pattern="^\d+(?:\.\d{1,2})?$"/>
                             </div>
                             <div className="form-field">
                                 <p>Date goal:</p>

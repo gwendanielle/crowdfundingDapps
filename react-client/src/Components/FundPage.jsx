@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const API = 'http://fundeth.localtunnel.me/api/projects/details/?project=';
-var paramID = 0;
 var address = "asdfads";
 class FundPage extends Component {
     constructor(props) {
@@ -10,14 +9,14 @@ class FundPage extends Component {
           error: null,
           isLoaded: false,
           items: null,
+          id: this.props.id,
           ContractInstance: this.props.contractInstance
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
       
     componentDidMount() {
-      let id = this.props.id;
-      paramID = id;
+      let id = this.state.id;
       fetch(API + id)
         .then(res => {
             return res.json();
@@ -47,7 +46,7 @@ class FundPage extends Component {
           from: web3.eth.accounts[0],
           value: web3.toWei(parseFloat(amount), 'ether')
         }, (err, result) => {
-          fetch(API + paramID, {
+          fetch(API + this.state.id, {
             method: 'POST',
             headers : {
                 'Content-Type': 'application/json',
@@ -71,18 +70,19 @@ class FundPage extends Component {
             <div className="center-elements top-margin border-box padding-left">
                 <h2>{items.title}</h2>
                 {items.status == 1 &&
-                    <p className="project-status"><i>On going</i> | date created: {items.date_created}, goal date: {items.date_goal}</p>
+                    <p className="project-status"><i>On going</i> | date created: {items.date_created} | goal date: {items.date_goal}</p>
                 }
                 {items.status == 2 &&
-                    <p className="project-status"><i>Completed</i> | date created: {items.date_created}, goal date: {items.date_goal}</p>
+                    <p className="project-status"><i>Completed</i> | date created: {items.date_created} | goal date: {items.date_goal}</p>
                 }
                 <p>{items.description}</p>
+                Goal Amount: <strong>{items.amount_goal} eth</strong> | Fund Raised: <strong>{items.amount_funded} eth</strong>
                 <form onSubmit={this.onSubmit}>
                     <div className="center-elements top-margin">
                         <div>
                             <label>
                             amount: 
-                            <input type="number" name="amount" id="amount" required/>
+                            <input type="text" name="amount" id="amount" required pattern="^\d+(?:\.\d{1,2})?$"/>
                             </label>
                         </div>
                         <button type="submit">Submit</button>
