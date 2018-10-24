@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const API = 'http://samu.localtunnel.me/api/projects/details/?project=';
+const API = 'http://fundeth.localtunnel.me/api/projects/details/?project=';
 var paramID = 0;
 var address = "asdfads";
 class FundPage extends Component {
