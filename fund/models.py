@@ -19,6 +19,12 @@ def validate_amount_goal(value):
         raise ValidationError('Goal amount should be greater than 0')
 
 
+def validate_creator_address(value):
+    projects_by_creator_address = Project.objects.filter(creator_address=value, status=1)
+    if projects_by_creator_address.exists():
+        raise ValidationError('Each address can only have one fundraising project at a time')
+
+
 class Project(models.Model):
     title = models.CharField(max_length=200)
     category = models.PositiveSmallIntegerField(choices=CATEGORY_CHOICES)
@@ -29,7 +35,7 @@ class Project(models.Model):
     status = models.PositiveSmallIntegerField(default=1, choices=STATUS_CHOICES)
     amount_funded = models.FloatField(default=0)
     amount_goal = models.FloatField(validators=[validate_amount_goal])
-    creator_address = models.CharField(max_length=100, unique=True)
+    creator_address = models.CharField(max_length=100, validators=[validate_creator_address])
 
     def __str__(self):
         return self.title
