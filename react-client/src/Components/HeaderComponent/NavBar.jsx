@@ -7,9 +7,9 @@ class NavBar extends Component {
         <div className="nav-header">
             <a href="/" className="logo">EthFund</a>
             <div className="header-right">
-                <Link to="/">Home</Link>
+                {/* <Link to="/">Home</Link>
                 <Link to="/fundlist">Fund</Link>
-                <Link to="/raisefund">Make a fund raise</Link>
+                <Link to="/raisefund">Make a fund raise</Link> */}
             </div>
         </div>
       </header>

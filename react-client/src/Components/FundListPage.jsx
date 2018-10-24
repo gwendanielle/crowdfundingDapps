@@ -27,6 +27,7 @@ class FundListPage extends Component {
             },
             
             (error) => {
+              alert(error)
               this.setState({
                 isLoaded: true,
                 error

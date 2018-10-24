@@ -4,5 +4,6 @@ logs
 # Compiled directory and file
 build/
 bundle.js
+*.hot-update.js
 # Dependency directories
 node_modules/
