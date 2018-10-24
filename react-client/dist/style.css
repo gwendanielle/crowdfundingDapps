@@ -8,29 +8,44 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #f3f3f3 !important;
+  height: 100%;
 }
 
 button {
   background: #222;
-  color: white;
+  color: white !important;
   padding: 10px;
   width: 200px;
   border: 2px grey solid;
   border-radius: 5px;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
-.app-container {
-  padding: 30px 75px 50px;
+.landing-panel {
+  background-image: url("https://i.imgur.com/5NhCyJ7.jpg");
+  background-color: #cccccc;
 }
 
-.header-font {
+.header-font, .landing-button, .logo {
   font-family: "Montserrat", sans-serif;
 }
 
-.body-font, .formDiv {
+.body-font, .landing-body, .formDiv {
   font-family: "Raleway", sans-serif;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 60px;
+  text-shadow: 3px 3px #000;
+  color: #fff !important;
+}
+
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 ul {
@@ -40,10 +55,10 @@ ul {
 .nav-header {
   overflow: hidden;
   background-color: #222;
-  padding: 20px 10px;
   color: #fff !important;
   height: 80px;
   text-decoration: none;
+  padding: 20px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,11 +69,6 @@ ul {
 .nav-header a:hover {
   font-weight: 900;
   text-decoration: none !important;
-}
-.nav-header .logo {
-  font-weight: 900;
-  font-size: 26px;
-  margin-left: 50px;
 }
 .nav-header .header-right {
   width: 30%;
@@ -115,6 +125,90 @@ ul {
 }
 .formDiv .form-field #date_goal {
   width: 332%;
+}
+
+#slide1, #slide2 {
+  width: 100%;
+}
+
+#slide1 {
+  background: url("https://i.imgur.com/QGEjymF.jpg") 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 600px;
+  margin: 0;
+  padding: 200px 0 260px 0;
+  background-size: cover;
+}
+
+.content {
+  margin: 0 auto;
+  width: 960px;
+}
+
+#header {
+  width: 100%;
+  background-color: #000000b8;
+  color: #fff !important;
+  height: 80px;
+  position: fixed;
+}
+
+.divider {
+  width: 40%;
+  height: 10px;
+  background: #fff;
+  box-shadow: 2px 1px 0px 0px #000;
+}
+
+.landing-button {
+  border: none;
+  font-weight: 900;
+  margin-top: 50px;
+  width: 300px;
+  height: 50px;
+}
+
+.landing-body {
+  font-size: 20px;
+  text-shadow: 1px 1px #000;
+}
+
+#logo a {
+  color: #fff;
+  text-decoration: none;
+  float: left;
+  font-size: 30px;
+  margin-top: 20px;
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+#nav {
+  width: 410px;
+  margin-top: 30px;
+  float: right;
+}
+#nav ul {
+  list-style: none;
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+}
+#nav ul li a {
+  float: left;
+  padding-left: 20px;
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 15px;
+}
+#nav ul li a:hover {
+  font-weight: 900;
+}
+
+#slide2 {
+  background: #000;
+  height: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */
