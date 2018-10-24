@@ -77,8 +77,18 @@ ul {
   font-size: 16px;
 }
 
-.project-status {
-  font-weight: bold;
+.fund-listing {
+  border-bottom: 2px solid gainsboro;
+  border-top: 2px solid gainsboro;
+  padding: 20px;
+  padding-bottom: 30px;
+  font-family: Raleway;
+}
+.fund-listing h3 {
+  color: #000;
+  text-decoration: none;
+  font-family: Montserrat !important;
+  font-weight: 900;
 }
 
 .center-elements {
@@ -101,8 +111,6 @@ ul {
 .bodyDiv {
   width: 100%;
   margin-top: 20px;
-  border-radius: 5px;
-  border: 2px solid #909090;
   background: #fff;
   padding: 15px 50px 50px;
 }
@@ -117,14 +125,14 @@ ul {
   font-size: 16px;
   font-weight: 900;
 }
-.formDiv .form-field input, .formDiv .form-field textarea {
+.formDiv .form-field input, .formDiv .form-field textarea, .formDiv .form-field select {
   width: 50%;
   border-radius: 5px;
   border: 2px solid #909090;
   padding: 5px;
 }
 .formDiv .form-field #date_goal {
-  width: 332%;
+  width: 150%;
 }
 
 #slide1, #slide2 {

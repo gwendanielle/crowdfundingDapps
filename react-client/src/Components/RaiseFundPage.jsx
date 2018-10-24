@@ -28,7 +28,7 @@ class RaiseFundPage extends Component {
     }
 
     onSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
         let amount_goal = document.getElementById('amount_goal').value;
@@ -57,7 +57,10 @@ class RaiseFundPage extends Component {
                         creator_address: web3.eth.accounts[0]
                     })
                 }).then((res) => res.json())
-                .then((data) =>  console.log(data))
+                .then((data) =>  {
+                    console.log(data);
+                    window.location = "/";
+                })
                 .catch((err)=> alert(err))
             } else {
                 alert(err)
@@ -85,7 +88,7 @@ class RaiseFundPage extends Component {
 		                            <option value="2">Education</option>
 		                            <option value="3">Community</option>
 		                            <option value="4">Health & Medicine</option>
-                                    <option value="5">Special Events</option>
+                                    <option value="5">Others</option>
 	                            </select>
                             </div>
                             <div className="form-field">

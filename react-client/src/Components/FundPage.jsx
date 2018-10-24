@@ -9,7 +9,7 @@ class FundPage extends Component {
           error: null,
           isLoaded: false,
           items: null,
-        //   id: this.props.id,
+          id: this.props.id,
           ContractInstance: this.props.contractInstance
         };
         this.onSubmit = this.onSubmit.bind(this);
@@ -20,8 +20,8 @@ class FundPage extends Component {
     }
       
     componentDidMount() {
-    //   let id = this.state.id;
-      fetch(API + 15)
+      let id = this.state.id;
+      fetch(API + id)
         .then(res => {
             return res.json();
         })
@@ -58,41 +58,54 @@ class FundPage extends Component {
             },
             body:JSON.stringify({amount:amount})
             }).then((res) => res.json())
-            .then((data) =>  console.log(data))
+            .then((data) =>  {
+              console.log(data);
+              window.location = "/";
+            })
             .catch((err)=>console.log(err))
         })
     }
 
     render() {
         const { error, isLoaded, items } = this.state;
+        const categoryMapping = ["", "Personal", "Education", "Community", "Health & Medicine", "Others"];
+
         if (error) {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading...</div>;
         } else {
           return (
-            <div className="center-elements top-margin border-box padding-left">
-                <h2>{items.title}</h2>
-                {items.status == 1 &&
-                    <p className="project-status"><i>On going</i> | Date created: {items.date_created} | Goal date: {items.date_goal}</p>
-                }
-                {items.status == 2 &&
-                    <p className="project-status"><i>Completed</i> | Date created: {items.date_created} | Goal date: {items.date_goal}</p>
-                }
-                <p>{items.description}</p>
-                Goal Amount: <strong>{items.amount_goal} eth</strong> | Fund Raised: <strong>{items.amount_funded} eth</strong>
-                {items.status == 1 &&
+            <div>
+              <div className="bodyDiv">
+                  <h2 className="header-font" style={{fontWeight: "900"}}>{items.title}</h2>
+                  <h5 className="body-font">
+                    <p className="project-status">
+                    {items.status == 1 &&
+                      <span style={{color: "blue", marginRight: "10px"}}>On going</span>
+                    }
+                    {items.status == 2 &&
+                      <span style={{color: "green", marginRight: "10px"}}>Completed</span> 
+                    }
+                    {items.status == 3 &&
+                      <span style={{color: "red", marginRight: "10px"}}>Ended</span> 
+                    }
+                     | {(items.amount_funded / items.amount_goal) * 100}% | {items.amount_funded} out of {items.amount_goal} ETH (~{items.amount_funded * 22500} out of ~{items.amount_goal * 22500} 円) funded | Goal date: {items.date_goal}
+                    </p>
+                  </h5>
+                  <p>{categoryMapping[items.category]}</p>
+                  <p className="body-font" style={{marginTop: "50px", fontSize: "18px"}}>{items.description}</p>
+                  {items.status == 1 &&
+                  <div className="formDiv">
                   <form onSubmit={this.onSubmit}>
-                    <div className="center-elements top-margin">
-                        <div>
-                            <label>
-                            amount: 
-                            <input type="text" name="amount" id="amount" required pattern="^\d+(?:\.\d{1,2})?$"/>
-                            </label>
-                        </div>
-                        <button type="submit">Submit</button>
+                    <div className="form-field">
+                        <p>Amount in ETH (~22,500 円 / 1 ETH):</p>
+                        <input style={{width: "25%"}} type="text" name="amount" id="amount" required pattern="^\d+(?:\.\d{1,2})?$"/>
                     </div>
-                </form>}
+                    <button type="submit">Submit</button>
+                  </form>
+                  </div>}
+              </div>
             </div>
           );
         }
