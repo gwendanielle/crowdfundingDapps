@@ -9,15 +9,19 @@ class FundPage extends Component {
           error: null,
           isLoaded: false,
           items: null,
-          id: this.props.id,
+        //   id: this.props.id,
           ContractInstance: this.props.contractInstance
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    componentWillMount() {
+        console.warn(this.prop);
+    }
       
     componentDidMount() {
-      let id = this.state.id;
-      fetch(API + id)
+    //   let id = this.state.id;
+      fetch(API + 15)
         .then(res => {
             return res.json();
         })

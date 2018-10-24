@@ -33,6 +33,7 @@ class RaiseFundPage extends Component {
         let description = document.getElementById('description').value;
         let amount_goal = document.getElementById('amount_goal').value;
         let date_goal = document.getElementById('date_goal').value;
+        let category = document.getElementById('category').value;
         let goalValue = web3.toBigNumber(web3.toWei(parseFloat(amount_goal), 'ether'));
 
 
@@ -49,7 +50,7 @@ class RaiseFundPage extends Component {
                     },
                     body: JSON.stringify({
                         title:title,
-                        category: 1,
+                        category: category,
                         description: description,
                         amount_goal: amount_goal,
                         date_goal: date_goal,
@@ -76,6 +77,16 @@ class RaiseFundPage extends Component {
                             <div className="form-field">
                                 <p>Title:</p>
                                 <input type="text" name="title" id="title" required/>
+                            </div>
+                            <div className="form-field">
+                                <p>Category:</p>
+                                <select name="category" id="category">
+		                            <option value="1">Personal</option>
+		                            <option value="2">Education</option>
+		                            <option value="3">Community</option>
+		                            <option value="4">Health & Medicine</option>
+                                    <option value="5">Special Events</option>
+	                            </select>
                             </div>
                             <div className="form-field">
                                 <p>Description:</p>
