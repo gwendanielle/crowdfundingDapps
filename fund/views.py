@@ -31,9 +31,9 @@ class ProjectDetailAPIView(APIView):
         project = request.GET.get('project')
 
         try:
-            project = Project.objects.get(pk=project)
+            project = Project.objects.get(pk=project, status=1)
         except Project.DoesNotExist as e:
-            return Response({'details': 'Project does not exist'}, status=404)
+            return Response({'details': 'Project does not exist or is already complete'}, status=404)
 
         amount_funded = request.data.get('amount')
 
@@ -46,7 +46,7 @@ class ProjectDetailAPIView(APIView):
 
         project.amount_funded = project.amount_funded + amount_funded
         if project.amount_funded >= project.amount_goal:
-            project.amount_goal = project.amount_goal
+            project.amount_funded = project.amount_goal
             project.status = 2
             project.date_finished = datetime.now()
 
