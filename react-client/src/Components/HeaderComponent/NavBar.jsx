@@ -5,11 +5,13 @@ class NavBar extends Component {
     return (
       <header>
         <div className="nav-header">
-            <a href="/" className="logo">EthFund</a>
-            <div className="header-right">
-                <Link to="/fundlist">Fund</Link>
-                <Link to="/raisefund">Make a fund raise</Link>
-            </div>
+          <div className="logo">
+            <a href="/" className="header-font header-link">EthFund</a>
+          </div>
+          <div className="header-right">
+            <Link to="/fundlist" className="header-font">Fund</Link>
+            <Link to="/raisefund" className="header-font">Make a fund raise</Link>
+          </div>
         </div>
       </header>
     )

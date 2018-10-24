@@ -67,35 +67,33 @@ class RaiseFundPage extends Component {
     render() {
         const { title, description, amount_goal, date_goal, creator_address } = this.state;
         return(
-            <form onSubmit={this.onSubmit}>
-                <div className="center-elements top-margin">
-                    <div>
-                        <label>
-                        title: 
-                        <input type="text" name="title" id="title" required/>
-                        </label>
+            <div>
+                <div className="bodyDiv">
+                    <h2 className="header-font">Your project's success begins here...</h2>
+                    <h5 className="body-font">Write as much information as possible so people are more likely to fund you!</h5>
+                    <div className="formDiv">
+                        <form onSubmit={this.onSubmit}>
+                            <div className="form-field">
+                                <p>Title:</p>
+                                <input type="text" name="title" id="title" required/>
+                            </div>
+                            <div className="form-field">
+                                <p>Description:</p>
+                                <textarea name="description" id="description" required/>
+                            </div>
+                            <div className="form-field">
+                                <p>Goal amount (in ETH):</p>
+                                <input type="text" name="amount_goal" id="amount_goal" required pattern="^\d+(?:\.\d{1,2})?$"/>
+                            </div>
+                            <div className="form-field">
+                                <p>Date goal:</p>
+                                <DatePicker dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} name="date_goal" id="date_goal" required/>
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
                     </div>
-                    <div>
-                        <label>
-                            description: 
-                            <textarea name="description" id="description" required/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            goal amount(in eth): 
-                            <input type="number" name="amount_goal" id="amount_goal" required pattern="^\d+(?:\.\d{1,2})?$"/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            date_goal: 
-                            <DatePicker dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} name="date_goal" id="date_goal" required/>
-                        </label>
-                    </div>
-                    <button type="submit">Submit</button>
                 </div>
-            </form>
+            </div>
         );
     }
 }

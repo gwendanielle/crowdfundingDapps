@@ -165,10 +165,12 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route name="home" exact path="/" component={HomePage} />
-          <Route name="fund" path="/fund/:id" render={(props)=><FundPage id={props.match.params.id} contractInstance={this.state.ContractInstance}/>} />
-          <Route name="fundlist" exact path="/fundlist" component={FundListPage} />
-          <Route name="raisefund" exact path="/raisefund" render={()=><RaiseFundPage contractInstance={this.state.ContractInstance}/>} />
+          <div className="app-container">
+              <Route name="home" exact path="/" component={HomePage} />
+              <Route name="fund" path="/fund/:id" render={(props)=><FundPage id={props.match.params.id} contractInstance={this.state.ContractInstance}/>} />
+              <Route name="fundlist" exact path="/fundlist" component={FundListPage} />
+              <Route name="raisefund" exact path="/raisefund" render={()=><RaiseFundPage contractInstance={this.state.ContractInstance}/>} />
+          </div>
         </div>
       </Router>
     )
