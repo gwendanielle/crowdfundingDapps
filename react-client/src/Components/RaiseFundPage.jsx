@@ -35,6 +35,7 @@ class RaiseFundPage extends Component {
         let date_goal = document.getElementById('date_goal').value;
         let goalValue = web3.toBigNumber(web3.toWei(parseFloat(amount_goal), 'ether'));
 
+
         this.props.contractInstance.addProject(goalValue, {
             gas: 300000,
             from: web3.eth.accounts[0],

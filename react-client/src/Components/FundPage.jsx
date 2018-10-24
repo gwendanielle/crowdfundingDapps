@@ -9,53 +9,57 @@ class FundPage extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          items: null
+          items: null,
+          ContractInstance: this.props.contractInstance
         };
-      }
+        this.onSubmit = this.onSubmit.bind(this);
+    }
       
-      componentDidMount() {
-    
-      let id = this.props.match.params.id;
+    componentDidMount() {
+      let id = this.props.id;
       paramID = id;
-        fetch(API + id)
-          .then(res => {
-              return res.json();
-          })
-          .then(
-            (result) => {
-              console.log(result);
-              address = result.creator_address;
-              this.setState({
-                isLoaded: true,
-                items: result
-              });
-            },
-            
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
-            }
-          )
-      }
+      fetch(API + id)
+        .then(res => {
+            return res.json();
+        })
+        .then(
+          (result) => {
+            address = result.creator_address;
+            this.setState({
+              isLoaded: true,
+              items: result
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+    }
 
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
         let amount = document.getElementById('amount').value;
-        console.log("check if i can get the paramID " + paramID);
-        console.log("check if i can get the address " + address);
-        fetch(API + paramID, {
+        this.props.contractInstance.fund(address, {
+          gas: 300000,
+          from: web3.eth.accounts[0],
+          value: web3.toWei(parseFloat(amount), 'ether')
+        }, (err, result) => {
+          fetch(API + paramID, {
             method: 'POST',
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',                  
             },
             body:JSON.stringify({amount:amount})
-        }).then((res) => res.json())
-        .then((data) =>  console.log(data))
-        .catch((err)=>console.log(err))
+            }).then((res) => res.json())
+            .then((data) =>  console.log(data))
+            .catch((err)=>console.log(err))
+        })
     }
+
     render() {
         const { error, isLoaded, items } = this.state;
         if (error) {

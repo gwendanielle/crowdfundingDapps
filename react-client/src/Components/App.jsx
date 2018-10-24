@@ -19,17 +19,17 @@ class App extends Component {
 
     const MyContract = web3.eth.contract([
   {
-    "constant": false,
-    "inputs": [
+    "constant": true,
+    "inputs": [],
+    "name": "getProjectAddresses",
+    "outputs": [
       {
-        "name": "_fundGoal",
-        "type": "uint256"
+        "name": "",
+        "type": "address[]"
       }
     ],
-    "name": "addProject",
-    "outputs": [],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -56,61 +56,17 @@ class App extends Component {
     "type": "function"
   },
   {
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "fallback"
-  },
-  {
-    "inputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getProjectAddresses",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address[]"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "name": "",
+        "name": "_fundGoal",
         "type": "uint256"
       }
     ],
-    "name": "projectAddresses",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "name": "addProject",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -126,6 +82,20 @@ class App extends Component {
       {
         "name": "",
         "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
       }
     ],
     "payable": false,
@@ -154,10 +124,40 @@ class App extends Component {
     "payable": false,
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "projectAddresses",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "fallback"
   }
 ]);
     this.state = {
-      ContractInstance: MyContract.at("0x26a63ea3662b5740dd5ca131726a8ae5b2db1b5f")
+      ContractInstance: MyContract.at("0x7ca3aa4da52676b45e53fb9a38aaa2f7f800ed00")
     };
   }
   render() {
@@ -166,9 +166,9 @@ class App extends Component {
         <div>
           <NavBar />
           <Route name="home" exact path="/" component={HomePage} />
-          <Route name="fund" path="/fund/:id" component={FundPage} />
+          <Route name="fund" path="/fund/:id" render={(props)=><FundPage id={props.match.params.id} contractInstance={this.state.ContractInstance}/>} />
           <Route name="fundlist" exact path="/fundlist" component={FundListPage} />
-          <Route name="raisefund" exact path="/raisefund" render={()=><RaiseFundPage num="2" contractInstance={this.state.ContractInstance}/>} />
+          <Route name="raisefund" exact path="/raisefund" render={()=><RaiseFundPage contractInstance={this.state.ContractInstance}/>} />
         </div>
       </Router>
     )
