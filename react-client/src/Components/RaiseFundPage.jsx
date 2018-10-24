@@ -72,25 +72,25 @@ class RaiseFundPage extends Component {
                     <div>
                         <label>
                         title: 
-                        <input type="text" name="title" id="title"/>
+                        <input type="text" name="title" id="title" required/>
                         </label>
                     </div>
                     <div>
                         <label>
                             description: 
-                            <textarea name="description" id="description" />
+                            <textarea name="description" id="description" required/>
                         </label>
                     </div>
                     <div>
                         <label>
                             goal amount: 
-                            <input type="text" name="amount_goal" id="amount_goal" />
+                            <input type="number" name="amount_goal" id="amount_goal" required/>
                         </label>
                     </div>
                     <div>
                         <label>
                             date_goal: 
-                            <DatePicker dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} name="date_goal" id="date_goal" />
+                            <DatePicker dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} name="date_goal" id="date_goal" required/>
                         </label>
                     </div>
                     <button type="submit">Submit</button>

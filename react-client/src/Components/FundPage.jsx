@@ -82,7 +82,7 @@ class FundPage extends Component {
                         <div>
                             <label>
                             amount: 
-                            <input type="text" name="amount" id="amount"/>
+                            <input type="number" name="amount" id="amount" required/>
                             </label>
                         </div>
                         <button type="submit">Submit</button>
