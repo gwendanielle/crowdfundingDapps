@@ -10,27 +10,51 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need a nodemon to run project locally (https://nodemon.io/) 
-Install nodemon using:
+You will need [Nodemon](https://nodemon.io/) to run project locally 
+
+Install Nodemon using:
 ```
 npm install -g nodemon
 ```
 
-### Installing
+### Setting up locally
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+To make the Django backend run, you first need to install the Python dependencies. We recommend you use [virtualenvs](https://docs.python.org/3/library/venv.html).
 
 ```
-Give the example
+pip install -r requirements.txt
 ```
 
-And repeat
+Then, to make the Django server run, execute the following:
 
 ```
-until finished
+./manage.py migrate
+./manage.py runserver
 ```
+
+Now, the Django backend is all set!
+For making the React frontend run, we first need to install the dependencies:
+
+```
+npm install
+```
+
+Next, we execute the following command (perhaps on another terminal):
+
+```
+npm run react-dev
+```
+
+Then, in another terminal, make sure to run Nodemon:
+
+```
+npm run server-dev
+```
+
+The app should now be running on http://127.0.0.1:8080/ :)
+
+__NOTE:__ You might need to change the API URL to the local port that your Django server is running on (const API on FundListPage.jsx, FundPage.jsx, and RaiseFundPage.jsx).
+
 
 ## Built With
 * [React.js](https://reactjs.org/) - JavaScript library for building user interfaces
