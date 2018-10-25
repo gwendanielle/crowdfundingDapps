@@ -32,7 +32,14 @@ Then, to make the Django server run, execute the following:
 ./manage.py runserver
 ```
 
-Now, the Django backend is all set! For making the React frontend run, we execute the following command (perhaps on another terminal):
+Now, the Django backend is all set!
+For making the React frontend run, we first need to install the dependencies:
+
+```
+npm install
+```
+
+Next, we execute the following command (perhaps on another terminal):
 
 ```
 npm run react-dev
