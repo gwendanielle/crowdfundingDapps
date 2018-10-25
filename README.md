@@ -14,8 +14,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-nodemon to run project locally
-
+You will need a nodemon to run project locally (https://nodemon.io/) 
+Install nodemon using:
 ```
 npm install -g nodemon
 ```
@@ -36,18 +36,14 @@ And repeat
 until finished
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Built With
-React.js
-Django
-Web3
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React.js](https://reactjs.org/) - JavaScript library for building user interfaces
+* [Django](https://www.djangoproject.com/) - Python Web framework
+* [Web3](https://web3js.readthedocs.io/en/1.0/) - Collection of libraries which allow you to interact with a local or remote ethereum node, using a HTTP or IPC connection
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Sam Benemerito** - *Python/Django Backend, ReactJS Frontend* - [@sbenemerito](https://github.com/sbenemerito)
+* **Gwen Merida** - *ReactJS Frontend* - [@gwendanielle](https://github.com/gwendanielle)
+* **JP Salvacion** - *Solidity Smart Contract* - [@jpsalvacion](https://github.com/jpsalvacion)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
