@@ -1,29 +1,11 @@
-from datetime import datetime
-
-from django.core.exceptions import ValidationError
 from django.db import models
+
+from fund.validators import *
 
 
 CATEGORY_CHOICES = ((1, 'Personal'), (2, 'Education'), (3, 'Community'),
                     (4, 'Health & Medicine'), (5, 'Others'))
 STATUS_CHOICES = ((1, 'Ongoing'), (2, 'Completed'), (3, 'Ended'))
-
-def validate_date_goal(value):
-    now = datetime.now().date()
-    if value and (value - now).days < 1:
-        raise ValidationError('Goal date should be at least 1 day from now')
-
-
-def validate_amount_goal(value):
-    if not value or value < 0:
-        raise ValidationError('Goal amount should be greater than 0')
-
-
-def validate_creator_address(value):
-    projects_by_creator_address = Project.objects.filter(creator_address=value, status=1)
-    if projects_by_creator_address.exists():
-        raise ValidationError('Each address can only have one fundraising project at a time')
-
 
 class Project(models.Model):
     title = models.CharField(max_length=200)

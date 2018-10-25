@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -9,6 +8,18 @@ from fund.serializers import ProjectSerializer
 
 
 class ProjectDetailAPIView(APIView):
+    """APIView to fund and retrieve Project instance's details.
+
+    URL Parameters:
+    project -- ID of Project instance
+
+    GET:
+    Return details of specific Project
+
+    POST:
+    Fund a specific Project
+        amount <float> - Amount to be funded in ETH
+    """
     def get(self, request):
         project = request.GET.get('project')
 
@@ -55,6 +66,20 @@ class ProjectDetailAPIView(APIView):
 
 
 class ProjectListAPIView(APIView):
+    """APIView to view all Projects, and create Project instances.
+
+    GET:
+    Return all existing Project's details
+
+    POST:
+    Creates a Project instance, then returns it
+        title <string> - Project's title*
+        category <int> - Project's category (choices in fund/models.py)*
+        description <string> - Extensive description about Project*
+        date_goal <string> - "YYYY-MM-DD" format, Project deadline*
+        amount_goal <float> - Amount needed to be funded in ETH*
+        creator_address <string> - Project creator's wallet address (hash)*
+    """
     def get(self, request):
         projects = Project.objects.all()
         serialized_projects = ProjectSerializer(projects, many=True)
