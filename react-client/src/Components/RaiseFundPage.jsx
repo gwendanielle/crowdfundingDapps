@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-const API = 'http://fundeth.localtunnel.me/api/projects/';
+const API = 'http://ethfunddd.localtunnel.me/api/projects/';
 
 class RaiseFundPage extends Component {
     constructor(props) {

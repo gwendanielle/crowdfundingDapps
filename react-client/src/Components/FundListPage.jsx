@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const API = 'http://fundeth.localtunnel.me/api/projects/';
+const API = 'http://ethfunddd.localtunnel.me/api/projects/';
 
 class FundListPage extends Component {
     constructor(props) {
@@ -14,6 +14,11 @@ class FundListPage extends Component {
       }
     
     componentDidMount() {
+      /**
+        * fetch list of fund raising projects
+        *
+        * @method GET
+        */ 
         fetch(API)
           .then(res => {
               return res.json();
@@ -37,6 +42,7 @@ class FundListPage extends Component {
     }
     
     render() {
+        // state callback
         const { error, isLoaded, items } = this.state;
         if (error) {
           return <div>Error: {error.message}</div>;
@@ -53,6 +59,7 @@ class FundListPage extends Component {
                         <li className="fund-listing" key={item.title}>
                           <Link to={"/fund/" + item.id}><h3>{item.title}</h3></Link>
                           <p className="project-status">
+                          {/* check fund project status */}
                           {item.status == 1 &&
                             <span style={{color: "blue", marginRight: "10px"}}>On going</span>
                           }

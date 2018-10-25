@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-const API = 'http://fundeth.localtunnel.me/api/projects/details/?project=';
-var address = "asdfads";
+const API = 'http://ethfunddd.localtunnel.me/api/projects/details/?project=';
+var address = "address";
+
 class FundPage extends Component {
     constructor(props) {
         super(props);
@@ -14,13 +15,17 @@ class FundPage extends Component {
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
-
-    componentWillMount() {
-        console.warn(this.prop);
-    }
-      
+    
+    // GET fund project details
     componentDidMount() {
       let id = this.state.id;
+
+      /**
+        * fetch fund details
+        *
+        * @param {string} id
+        * @method GET
+        */ 
       fetch(API + id)
         .then(res => {
             return res.json();
@@ -50,6 +55,12 @@ class FundPage extends Component {
           from: web3.eth.accounts[0],
           value: web3.toWei(parseFloat(amount), 'ether')
         }, (err, result) => {
+          /**
+          * fund the project
+          *
+          * @param {string} id
+          * @method POST
+          */ 
           fetch(API + this.state.id, {
             method: 'POST',
             headers : {
